@@ -6,6 +6,7 @@ import { ModalComponent } from "../../components/modal/modal.component";
 import { CategoryService } from '../../services/category.service';
 import { CommonModule } from '@angular/common';
 import { ICategory } from '../../interfaces';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-category',
@@ -22,6 +23,7 @@ import { ICategory } from '../../interfaces';
 })
 export class CategoryComponent {
   public categoryService = inject(CategoryService);
+  public modalService = inject(NgbModal);
 
   constructor() {
     this.categoryService.getAll();
@@ -29,5 +31,6 @@ export class CategoryComponent {
   
   onFormEventCalled(params: ICategory) {
     this.categoryService.save(params);
+    this.modalService.dismissAll();
   }
 }

@@ -20,7 +20,7 @@
                         <i class="fa-solid fa-eye white"
                         ></i>
                       </button>
-                      <button type="button" class="btn btn-danger">
+                      <button type="button" (click)="deleteCategory(item)" class="btn btn-danger">
                         <i class="fa-solid fa-trash white"
                         ></i>
                       </button>
@@ -35,6 +35,7 @@
 
 <app-modal #detailModal>
  <app-category-form
+ (callParentEvent)="onFormEventCalled($event)"
  [title]="'Update Category'"
  [toUpdateCategory]="selectedItem"
  />
